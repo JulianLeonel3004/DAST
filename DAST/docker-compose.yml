@@ -1,0 +1,36 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "8080:8080"
+    links:
+      - zap
+      - mysql
+    volumes:
+      - .:/app
+
+  zap:
+    image: "owasp/zap2docker-stable:latest"
+    command: zap.sh -daemon -host 0.0.0.0 -port 8090 -config api.addrs.addr.name=.* -config api.addrs.addr.regex=true -config api.key=fookey
+    links:
+      - dvwa
+    ports:
+      - "8090:8090"
+
+  dvwa:
+    image: "infoslack/dvwa:latest"
+    ports:
+      - "8070:80"
+
+  mysql:
+    image: "mysql:5.7"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=mini-dast
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+    ports:
+      - "3306:3306"
+    volumes: 
+      - ~/docker/mysql-data:/var/lib/mysql

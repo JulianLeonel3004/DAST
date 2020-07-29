@@ -1,0 +1,16 @@
+{
+    "mysql":
+    {
+        "HOST": "dast_mysql_1",
+        "PORT": "3306",
+        "USER": "user",
+        "PASSWORD": "password",
+        "DATABASE": "mini-dast"
+    },
+
+    "zap":
+    {
+        "HOST":"dast_zap_1",
+        "PORT":"8090"
+    }   
+}

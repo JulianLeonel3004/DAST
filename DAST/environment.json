@@ -1,0 +1,16 @@
+ {
+    "mysql":
+    {
+        "HOST": "localhost",
+        "PORT": "3306",
+        "USER": "user",
+        "PASSWORD": "password",
+        "DATABASE": "mini-dast"
+    },
+
+    "zap":
+    {
+        "HOST":"localhost",
+        "PORT":"8090"
+    }   
+}
